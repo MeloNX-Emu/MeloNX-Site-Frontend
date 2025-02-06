@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Oh you silly fool{% endblock title %}
+{% block content %}
+<div class="flex items-center justify-center min-h-screen">
+    <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 my-4 animate-fade-down w-2/3">
+        <h1 class="text-3xl font-bold text-center">You must think you're so smart for 'finding' this link....</h1>
+        <h1 class="text-xl font-bold text-center text-neutral-content">The download ain't out silly :P be patient.</h1>
+        <h1 class="text-sm text-gray-300 text-center">And no there is nothing in inspect element, don't waste your time</h1>
+        <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-full text-neutral-content" href="{% url 'home:home' %}"><h1 class="text-bold text-xl">Return home in shame.</h1></a>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}Compatibility{% endblock title %}
+{% block content %}
+    <h1 class="text-6xl font-bold text-center py-4 animate-fade-down">Compatibility</h1>
+
+    <div class="bg-base-200 bg-opacity-15 border-2 border-white/5 rounded-2xl shadow-lg space-y-2 p-4 my-2 animate-fade-down animate-delay-[400ms]">
+        <div class="flex flex-col md:flex-row md:items-center">
+            <div class="w-full md:w-3/5">
+                <div class="flex flex-col md:flex-row md:items-center space-x-2">
+                    <h3 class="text-xl font-semibold w-24">Perfect</h3>
+                    <progress class="progress w-full md:w-56 progress-success" value="{{ status_percentages.Perfect }}" max="100"></progress>
+                    <h1 class="text-md w-12">{{ status_percentages.Perfect|floatformat:2 }}%</h1>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center space-x-2">
+                    <h3 class="text-xl font-semibold w-24">Playable</h3>
+                    <progress class="progress w-full md:w-56 progress-warning" value="{{ status_percentages.Playable }}" max="100"></progress>
+                    <h1 class="text-md w-12">{{ status_percentages.Playable|floatformat:2 }}%</h1>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center space-x-2">
+                    <h3 class="text-xl font-semibold w-24">Menu</h3>
+                    <progress class="progress w-full md:w-56 text-orange-400" value="{{ status_percentages.Menu }}" max="100"></progress>
+                    <h1 class="text-md w-12">{{ status_percentages.Menu|floatformat:2 }}%</h1>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center space-x-2">
+                    <h3 class="text-xl font-semibold w-24">Boots</h3>
+                    <progress class="progress w-full md:w-56 progress-error" value="{{ status_percentages.Boots }}" max="100"></progress>
+                    <h1 class="text-md w-12">{{ status_percentages.Boots|floatformat:2 }}%</h1>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center space-x-2">
+                    <h3 class="text-xl font-semibold w-24">Nothing</h3>
+                    <progress class="progress w-full md:w-56 text-black" value="{{ status_percentages.Nothing }}" max="100"></progress>
+                    <h1 class="text-md w-12">{{ status_percentages.Nothing|floatformat:2 }}%</h1>
+                </div>
+            </div>
+
+            <div class="mt-4 md:mt-0 ml-auto md:w-2/5 text-left md:text-right space-y-1.5">
+                <h1 class="text-md">Perfect means the whole game has no issues.</h1>
+                <h1 class="text-md">Playable means it goes in-game but, you may encounter issues.</h1>
+                <h1 class="text-md">Menu means gets to the menu but, cannot continue from this point.</h1>
+                <h1 class="text-md">Boots means the game loads but, crashes before reaching the menu/s.</h1>
+                <h1 class="text-md">Nothing means the game does not boot at all.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-base-100/15 border-2 border-white/5 shadow-lg rounded-2xl p-4 space-y-4 animate-fade-down animate-delay-[400ms]">
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+            <form method="get" class="w-full md:w-auto flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div>
+                    <label for="compatibility" class="block text-sm font-medium text-neutral-content">Compatibility</label>
+                    <select id="compatibility" name="compatibility" class="bg-base-100/15 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="">All</option>
+                        {% for status in compatibility_choices %}
+                            <option value="{{ status.0 }}" {% if status.0 == compatibility_filter %}selected{% endif %}>{{ status.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="ram" class="block text-sm font-medium text-neutral-content">RAM</label>
+                    <select id="ram" name="ram" class="bg-base-100/15 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="">All</option>
+                        {% for ram in ram_choices %}
+                            <option value="{{ ram.0 }}" {% if ram.0 == ram_filter %}selected{% endif %}>{{ ram.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="search" class="block text-sm font-medium text-neutral-content">Search</label>
+                    <input type="text" id="search" name="search" value="{{ search_query }}" class="bg-base-100/15 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                </div>
+                <div class="flex items-end space-x-4">
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Filter</button>
+                    {% if compatibility_filter or ram_filter or search_query %}
+                        <a href="{% url 'compatibility:home' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600/15 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 mx-4">Remove Filter</a>
+                    {% endif %}
+                </div>
+            </form>
+
+            {% if user.is_authenticated %}
+                <div>
+                    <button class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 text-neutral-content hover:text-white" onclick="window.location.href='{% url 'compatibility:request' %}'">Request Game Entry</button>
+                </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if game_entry %}
+                <div class="space-y-2">
+                    {% for game_entry in game_entry %}
+                        {% include 'compatibility/compatibility_list_item.html' %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h1 class="text-3xl font-bold text-center mb-4">No games found</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="175" height="175" fill="currentColor" class="bi bi-exclamation-circle mx-auto mb-4" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                </svg>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

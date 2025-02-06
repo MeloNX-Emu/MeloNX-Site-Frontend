@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Request Game Entry{% endblock title %}
+{% block content %}
+    <h1 class="text-6xl font-bold text-center py-4 animate-fade-down">Request Game Entry</h1>
+
+    <div class="flex-col items-center justify-center bg-base-100/15 border-2 border-white/5 shadow-lg rounded-2xl py-3 px-4 animate-fade-down animate-delay-[400ms] sm:w-4/5 md:w-3/5 lg:w-2/3 xl:w-3/5 mx-auto">
+        <div class="bg-base-100/5 border-2 border-white/5 shadow-lg rounded-2xl p-4">
+            <p class="font-bold text-md">Guidelines:</p>
+            <ul>
+                <li class="list-disc ml-4">Check if the game is not already in the list. If the game is in there make sure your memory configuration isn't there.</li>
+                <li class="list-disc ml-4">Judge compatibility based off of visual bugs or general bugs encountered. <strong>Not on performance.</strong></li>
+                <li class="list-disc ml-4">Not sure what compatibility rating you should give? Reference <a href="{% url 'compatibility:home' %}" class="text-blue-600 hover:text-blue-700 underline">this page</a> for the meanings of the ratings.</li>
+                <li class="list-disc ml-4">Please use YouTube as the source for the video</li>
+                <li class="list-disc ml-4">Not sure what the Game's ID is? Search <a href="https://tinfoil.io" class="text-blue-600 hover:text-blue-700 underline">tinfoil.io</a> for it.</li>
+        </div>
+
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-neutral-content">Game Name</span>
+                </label>
+                <input type="text" name="name" class="input input-bordered bg-base-100/35" required>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-neutral-content">Game ID</span>
+                </label>
+                <input type="text" name="game_id" class="input input-bordered bg-base-100/35" required>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-neutral-content">Description</span>
+                </label>
+                <textarea name="description" class="textarea textarea-bordered bg-base-100/35" required></textarea>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-neutral-content">Compatibility</span>
+                </label>
+                <select name="compatibility" class="select select-bordered bg-base-100/35" required>
+                    {% for status in compatibility_choices %}
+                        <option value="{{ status.0 }}">{{ status.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-neutral-content">Device Memory</span>
+                </label>
+                <select name="device_memory" class="select select-bordered bg-base-100/35" required>
+                    {% for ram in ram_choices %}
+                        <option value="{{ ram.0 }}">{{ ram.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-neutral-content">YouTube URL</span>
+                </label>
+                <input type="url" name="video" class="input input-bordered bg-base-100/35" required>
+            </div>
+
+            <div class="form-control mt-6">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
