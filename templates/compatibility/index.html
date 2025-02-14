@@ -82,11 +82,9 @@
                 </div>
             </form>
 
-            {% if user.is_authenticated %}
-                <div>
-                    <button class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 text-neutral-content hover:text-white" onclick="window.location.href='{% url 'compatibility:request' %}'">Request Game Entry</button>
-                </div>
-            {% endif %}
+            <div>
+                <button class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 text-neutral-content hover:text-white" onclick="window.location.href='{% url 'compatibility:request' %}'">Request Game Entry</button>
+            </div>
         </div>
 
         <div>
