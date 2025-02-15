@@ -42,7 +42,10 @@
             </div>
         </div>
         
-        <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-full text-neutral-content" href="{% url 'compatibility:home' %}"><h1 class="text-bold text-xl">View Compatibility</h1></a>
+        <div class="flex flex-row space-x-4">
+            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 md:w-1/2 w-full text-neutral-content" href="https://youtube.com/@melonx-ios"><h1 class="text-bold text-xl">View more videos on our YouTube</h1></a>
+            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 md:w-1/2 w-full text-neutral-content" href="{% url 'compatibility:home' %}"><h1 class="text-bold text-xl">View Compatibility</h1></a>
+        </div>
     </div>
 
     <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-700 mt-4 mb-2 w-full">
@@ -63,7 +66,7 @@
                 <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content" href="{{ download.download_link }}">
                     <h1 class="text-bold text-xl">Download</h1>
                 </a>
-                <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content" href="https://git.743378673.xyz/MeloNX/MeloNX">
+                <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content" href="https://git.743378673.xyz/MeloNX/MeloNX#readme">
                     <h1 class="text-bold text-xl">More Info</h1>
                 </a>
             </div>
@@ -100,11 +103,13 @@
                 </div>
             </a>
 
-            <div class="flex flex-col items-center">
-                <h1 class="text-xl font-bold text-center">MeloNX Team</h1>
-                <img src="{% static 'imgs/MeloNX.svg' %}" alt="The MeloNX Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red" class="rounded-2xl h-36 w-36">
-                <h1 class="text-lg font-bold text-center text-neutral-content">Contributors/Support</h1>
-            </div>
+            <a href="https://discord.gg/melonx">
+                <div class="flex flex-col items-center">
+                    <h1 class="text-xl font-bold text-center">MeloNX Team</h1>
+                    <img src="{% static 'imgs/MeloNX.svg' %}" alt="The MeloNX Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red" class="rounded-2xl h-36 w-36">
+                    <h1 class="text-lg font-bold text-center text-neutral-content">Contributors/Support</h1>
+                </div>
+            </a>
 
             <div class="flex flex-col items-center">
                 <h1 class="text-xl font-bold text-center">Ryujinx</h1>
