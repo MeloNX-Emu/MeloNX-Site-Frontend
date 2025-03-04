@@ -29,7 +29,7 @@
     {% block js%}
     {% endblock%}
 </head>
-<body class="min-h-screen flex flex-col bg-gradient-to-tl from-melonx-red to-melonx-blue     animate-mesh-gradient bg-[length:200%_200%] dark:text-white">
+<body class="min-h-screen flex flex-col bg-mesh-gradient animate-mesh-gradient dark:text-white">
     <div class="w-2/3 mx-auto mt-3">
         {% if messages %}
             {% for message in messages %}
@@ -51,20 +51,20 @@
         {% endif %}
     </div>
 
-    <main class="container mx-auto mb-6 flex-grow dark:text-white md:px-4">
+    <main class="container mx-auto mb-6 grow dark:text-white md:px-4">
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer class="footer bg-base-200 bg-opacity-15 border-t-2 border-white/5 text-neutral-content items-center px-4 py-2">
-        <aside class="grid-flow-col items-center">
+    <footer class="footer bg-base-200/15 border-t-2 border-white/5 text-neutral-content items-center px-4 py-2 flex flex-col md:flex-row justify-between">
+        <aside class="flex items-center mb-4 md:mb-0">
             <a href="{% url 'home:home' %}">
                 <img src="{% static 'imgs/MeloNX.svg' %}" alt="The MeloNX Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red" class="h-12">
             </a>
-            <p>Copyright MeloNX © {% now "Y" %} - All right reserved</p>
+            <p class="ml-4">Copyright MeloNX © {% now "Y" %} - All right reserved</p>
         </aside>
-
-        <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+    
+        <nav class="flex gap-4">
             <a href="https://git.743378673.xyz/MeloNX/MeloNX">
                 <img src="{% static 'imgs/gitea.svg' %}" alt="Gitea's Logo" class="h-6 mt-1">
             </a>

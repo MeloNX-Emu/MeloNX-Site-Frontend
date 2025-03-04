@@ -3,16 +3,15 @@
 {% block title %}Download{% endblock title %}
 {% block content %}
     <h1 class="text-6xl font-bold text-center animate-fade-down mt-4">MeloNX Downloads</h1>
-    <h1 class="text-2xl font-bold text-center animate-fade-down text-neutral-content">Download Previous Versions of MeloNX</h1>
 
     <div class="bg-base-100/5 border-2 border-white/5 shadow-lg rounded-2xl p-4 animate-fade-down animate-delay-500 mt-6 mb-6">
         <form method="get" class="w-full flex flex-col">
             <div>
                 <label for="search" class="block text-sm font-medium text-neutral-content">Search</label>
-                <input type="text" id="search" name="search" class="bg-base-100/15 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" placeholder="Search for a version number">
+                <input type="text" id="search" name="search" class="bg-base-100/15 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-hidden focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" placeholder="Search for a version number">
             </div>
-            <div class="flex items-end space-x-4">
-                <button type="submit" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 {% if search_query %} w-1/2 {% else %} w-full {% endif %} text-neutral-content">
+            <div class="flex items-end gap-4 {% if search_query %} mr-4 {% endif %}">
+                <button type="submit" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 {% if search_query %} w-1/2 {% else %} w-full {% endif %} text-neutral-content shadow rounded-md h-12">
                     <div class="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-search w-4 mr-2" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -22,12 +21,12 @@
                 </button>
 
                 {% if search_query %}
-                    <a href="{% url 'home:download_ipa' %}" class="btn bg-red-600/15 border-white/15 hover:bg-red-700/15 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content">
+                    <a href="{% url 'home:download_ipa' %}" class="btn bg-red-600/15 border-white/15 hover:bg-red-700/15 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content shadow rounded-md h-12">
                         <div class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle w-5 mr-2 mt-0.5" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-                              </svg>
+                            </svg>
                             <h1 class="text-bold text-xl">Remove Filter</h1>
                         </div>
                     </a>
@@ -36,19 +35,30 @@
         </form>
     </div>
 
-    <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-500 my-2">
-        <h1 class="text-lg font-semibold">Showing search results for {{ search_query }}</h1>
-    </div>
+    {% if search_query %}
+        <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-500 my-2">
+            <h1 class="text-lg font-semibold">Showing search results for {{ search_query }}</h1>
+        </div>
+    {% endif %}
 
     {% for download in downloads %}
         <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-500 my-4" id="changelog-{{ download.version_number }}">
-            <h1 class="text-2xl font-semibold">Version: {{ download.version_number }}</h1>
-            <p class="text-neutral-content">Released: {{ download.release_date|date:"d M Y" }}</p> 
+            <div class="flex flex-row">
+                <div>
+                    <h1 class="text-2xl font-semibold">Version: {{ download.version_number }}</h1>
+                    <p class="text-neutral-content">Released: {{ download.release_date|date:"d M Y" }}</p> 
+                </div>
+
+                {% if download == is_latest %}
+                    <span class="badge text-white bg-success my-auto ml-auto">Recommended</span>
+                {% endif %}
+            </div>
+
             <div class="divider my-1"></div>
 
             <p class="text-base">{{ download.changelog|linebreaksbr }}</p>
 
-            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-full text-neutral-content" href="{{ download.download_link }}">
+            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-full text-neutral-content shadow rounded-md h-12" href="{{ download.download_link }}">
                 <div class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-download w-5 mr-2" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>

@@ -1,10 +1,60 @@
 /* Tailwind Imports */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 /* Google Font Inter Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap')
+layer(utilities);
+
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-animated';
+@plugin 'daisyui';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer theme {
+  :root {
+    --color-melonx-blue: #5a4edd;
+    --color-melonx-red: #d43232;
+  }
+}
+
+@layer utilities {
+  @keyframes mesh-gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-mesh-gradient {
+    animation: mesh-gradient 8s ease infinite;
+  }
+
+  .bg-mesh-gradient {
+    background-image: linear-gradient(to top left, var(--color-melonx-red), var(--color-melonx-blue));
+    background-size: 200% 200%;
+  }
+}
 
 @layer base {
     html {

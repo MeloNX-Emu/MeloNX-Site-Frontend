@@ -5,11 +5,11 @@
     <h1 class="text-6xl font-bold text-center animate-fade-down mt-4">MeloNX</h1>
     <h1 class="text-2xl font-bold text-center text-neutral-content animate-fade-down animate-delay-200">The most advanced NX emulator for iOS</h1>
 
-    <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-700 my-4">
+    <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg px-2 py-4 animate-fade-down animate-delay-700 my-4">
         <h1 class="text-3xl font-semibold text-center">Gameplay</h1>
 
         <div>
-            <div class="flex flex-col md:flex-row md:space-x-10 items-center justify-center">
+            <div class="flex flex-col md:flex-row md:gap-10 items-center justify-center">
                 <div class="mb-4 md:mb-0 w-full md:w-1/2 lg:w-1/3">
                     <h1 class="text-xl font-bold text-center text-neutral-content">Mario Kart 8 Deluxe</h1>
                     <div class="aspect-video">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         
-            <div class="flex flex-col md:flex-row md:space-x-10 items-center justify-center mt-4">
+            <div class="flex flex-col md:flex-row md:gap-10 items-center justify-center mt-4">
                 <div class="mb-4 md:mb-0 w-full md:w-1/2 lg:w-1/3">
                     <h1 class="text-xl font-bold text-center text-neutral-content">The Legend Of Zelda: Tears of the Kingdom</h1>
                     <div class="aspect-video">
@@ -42,9 +42,13 @@
             </div>
         </div>
         
-        <div class="flex md:flex-row flex-col md:space-x-4">
-            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 md:w-1/2 w-full text-neutral-content" href="https://youtube.com/@melonx-ios"><h1 class="text-bold text-xl">View more videos on our YouTube</h1></a>
-            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 md:w-1/2 w-full text-neutral-content" href="{% url 'compatibility:home' %}"><h1 class="text-bold text-xl">View Compatibility</h1></a>
+        <div class="flex md:flex-row flex-col md:gap-4 mt-4 md:mr-4 gap-y-2 md:gap-y-0">
+            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white md:w-1/2 w-full text-neutral-content shadow rounded-md h-12" href="https://youtube.com/@melonx-ios">
+                <h1 class="text-bold text-xl">View more videos on our YouTube</h1>
+            </a>
+            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white md:w-1/2 w-full text-neutral-content shadow rounded-md h-12" href="{% url 'compatibility:home' %}">
+                <h1 class="text-bold text-xl">View Compatibility</h1>
+            </a>
         </div>
     </div>
 
@@ -52,7 +56,7 @@
         <h1 class="text-2xl font-semibold text-center">Installing isn't as simple as sideloading. Please follow the instructions in the download box</h1>
     </div>
 
-    <div class="flex flex-col lg:flex-row lg:space-x-4">
+    <div class="flex flex-col lg:flex-row gap-4">
         <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-700 my-4 w-full lg:w-1/2 mx-auto flex flex-col">
             <h1 class="text-3xl font-semibold text-center">Download MeloNX!</h1>
             {% if download %}
@@ -62,12 +66,12 @@
                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                 <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
             </svg>
-            <div class="flex flex-row space-x-2">
-                <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content" href="{{ download.download_link }}">
+            <div class="flex flex-row gap-2">
+                <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content shadow rounded-md h-12" href="{% url 'home:download_ipa' %}">
                     <h1 class="text-bold text-xl">Download</h1>
                 </a>
-                <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content" href="https://git.743378673.xyz/MeloNX/MeloNX#readme">
-                    <h1 class="text-bold text-xl">More Info</h1>
+                <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-1/2 text-neutral-content shadow rounded-md h-12" href="https://git.743378673.xyz/MeloNX/MeloNX#readme">
+                    <h1 class="text-bold text-xl">Instructions</h1>
                 </a>
             </div>
         </div>
@@ -77,7 +81,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-discord w-36 mx-auto" viewBox="0 0 16 16" alt="Discord's Logo">
                 <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
             </svg>
-            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-full text-neutral-content" href="https://discord.gg/melonx">
+            <a role="button" class="btn bg-base-100/15 border-white/15 hover:bg-base-100/30 hover:border-white/30 hover:text-white mt-4 w-full text-neutral-content shadow rounded-md h-12" href="https://discord.gg/melonx">
                 <h1 class="text-bold text-xl">Join!</h1>
             </a>
         </div>
@@ -86,7 +90,7 @@
     <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-700 mb-4 mt-6 mx-auto flex flex-col">
         <h1 class="text-3xl font-semibold text-center mb-4">Credits</h1>
         
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 flex-grow">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 grow">
             <a href="https://stossy11.com">
                 <div class="flex flex-col items-center">
                     <h1 class="text-xl font-bold text-center">Stossy11</h1>

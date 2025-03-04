@@ -15,62 +15,50 @@
                 <li class="list-disc ml-4">Not sure what the Game's ID is? Search <a href="https://switchbrew.org/w/index.php?title=Title_list/Games" class="text-blue-600 hover:text-blue-700 underline">swtichbrew.org</a> for it.</li>
         </div>
 
-        <form method="POST" class="space-y-4">
+        <form method="POST" class="gap-y-4 mt-4">
             {% csrf_token %}
             
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text text-neutral-content">Game Name</span>
-                </label>
-                <input type="text" name="name" class="input input-bordered bg-base-100/35" required>
-            </div>
-
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text text-neutral-content">Game ID</span>
-                </label>
-                <input type="text" name="game_id" class="input input-bordered bg-base-100/35" required>
-            </div>
-
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text text-neutral-content">Description</span>
-                </label>
-                <textarea name="description" class="textarea textarea-bordered bg-base-100/35" required></textarea>
-            </div>
-
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text text-neutral-content">Compatibility</span>
-                </label>
-                <select name="compatibility" class="select select-bordered bg-base-100/35" required>
+            <fieldset class="fieldset">
+                <legend class="text-neutral-content">Game Name</legend>
+                <input type="text" name="name" class="input input-bordered bg-base-100/35 w-full rounded-md" required>
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="text-neutral-content">Game ID</legend>
+                <input type="text" name="game_id" class="input input-bordered bg-base-100/35 w-full rounded-md" required>
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="text-neutral-content">Description</legend>
+                <textarea name="description" class="textarea textarea-bordered bg-base-100/35 w-full rounded-md" required></textarea>
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="text-neutral-content">Compatibility</legend>
+                <select name="compatibility" class="select select-bordered bg-base-100/35 w-full rounded-md" required>
                     {% for status in compatibility_choices %}
                         <option value="{{ status.0 }}">{{ status.1 }}</option>
                     {% endfor %}
                 </select>
-            </div>
-
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text text-neutral-content">Device Memory</span>
-                </label>
-                <select name="device_memory" class="select select-bordered bg-base-100/35" required>
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="text-neutral-content">Device Memory</legend>
+                <select name="device_memory" class="select select-bordered bg-base-100/35 w-full rounded-md" required>
                     {% for ram in ram_choices %}
                         <option value="{{ ram.0 }}">{{ ram.1 }}</option>
                     {% endfor %}
                 </select>
-            </div>
-
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text text-neutral-content">YouTube URL</span>
-                </label>
-                <input type="url" name="video" class="input input-bordered bg-base-100/35" required>
-            </div>
-
-            <div class="form-control mt-6">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="text-neutral-content">YouTube URL</legend>
+                <input type="url" name="video" class="input input-bordered bg-base-100/35 w-full" required>
+            </fieldset>
+            
+            <div class="mt-6">
+                <button type="submit" class="btn btn-primary w-full">Submit</button>
+            </div>            
         </form>
     </div>
 {% endblock content %}
