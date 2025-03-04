@@ -36,6 +36,10 @@
         </form>
     </div>
 
+    <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-500 my-2">
+        <h1 class="text-lg font-semibold">Showing search results for {{ search_query }}</h1>
+    </div>
+
     {% for download in downloads %}
         <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-500 my-4" id="changelog-{{ download.version_number }}">
             <h1 class="text-2xl font-semibold">Version: {{ download.version_number }}</h1>
