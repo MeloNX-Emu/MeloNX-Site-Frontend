@@ -90,36 +90,30 @@
     <div class="bg-base-100/5 border-2 border-white/5 rounded-2xl shadow-lg p-4 animate-fade-down animate-delay-700 mb-4 mt-6 mx-auto flex flex-col">
         <h1 class="text-3xl font-semibold text-center mb-4">Credits</h1>
         
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 grow">
-            <a href="https://stossy11.com">
-                <div class="flex flex-col items-center">
-                    <h1 class="text-xl font-bold text-center">Stossy11</h1>
-                    <img src="{% static 'imgs/credit/stossy11.jpg' %}" alt="Stossy11's Profile Picture. An image depicting a Minecraft Diamond Pickaxe mining a Minecraft Diamond Ore block" class="rounded-2xl h-36 w-36">
-                    <h1 class="text-lg font-bold text-center text-neutral-content">Creator of MeloNX</h1>
-                </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-center">
+            <a href="https://stossy11.com" class="flex flex-col items-center space-y-2 hover:scale-105 transition-transform">
+                <h1 class="text-xl font-bold text-center">Stossy11</h1>
+                <img src="{% static 'imgs/credit/stossy11.jpg' %}" 
+                     alt="Stossy11's Profile Picture. An image depicting a Minecraft Diamond Pickaxe mining a Minecraft Diamond Ore block" 
+                     class="rounded-2xl h-36 w-36">
+                <h2 class="text-lg font-semibold text-center text-neutral-600 dark:text-neutral-400">Creator of MeloNX</h2>
             </a>
-
-            <a href="https://discord.com/users/759016199647395860">
-                <div class="flex flex-col items-center">
-                    <h1 class="text-xl font-bold text-center">Hyper</h1>
-                    <img src="{% static 'imgs/credit/hyper.png' %}" alt="Hyper's Profile Picture. An image depicting a retro computer with a terminal UI on screen" class="rounded-2xl h-36 w-36">
-                    <h1 class="text-lg font-bold text-center text-neutral-content">Founding Partner</h1>
-                </div>
+        
+            <a href="https://discord.gg/melonx" class="flex flex-col items-center space-y-2 hover:scale-105 transition-transform">
+                <h1 class="text-xl font-bold text-center">MeloNX Team</h1>
+                <img src="{% static 'imgs/MeloNX.svg' %}" 
+                     alt="The MeloNX Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red" 
+                     class="rounded-2xl h-36 w-36">
+                <h2 class="text-lg font-semibold text-center text-neutral-600 dark:text-neutral-400">Contributors/Support</h2>
             </a>
-
-            <a href="https://discord.gg/melonx">
-                <div class="flex flex-col items-center">
-                    <h1 class="text-xl font-bold text-center">MeloNX Team</h1>
-                    <img src="{% static 'imgs/MeloNX.svg' %}" alt="The MeloNX Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red" class="rounded-2xl h-36 w-36">
-                    <h1 class="text-lg font-bold text-center text-neutral-content">Contributors/Support</h1>
-                </div>
-            </a>
-
-            <div class="flex flex-col items-center">
+        
+            <div class="flex flex-col items-center space-y-2">
                 <h1 class="text-xl font-bold text-center">Ryujinx</h1>
-                <img src="{% static 'imgs/credit/OGRyujinx.png' %}" alt="The Ryujinx Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red with a hashtag symbol in the middle" class="rounded-2xl h-36 w-36">
-                <h1 class="text-lg font-bold text-center text-neutral-content">Core</h1>
+                <img src="{% static 'imgs/credit/OGRyujinx.png' %}" 
+                     alt="The Ryujinx Logo, An image depicting two Nintendo Switch Joy-Cons coloured Blue and Red with a hashtag symbol in the middle" 
+                     class="rounded-2xl h-36 w-36">
+                <h2 class="text-lg font-semibold text-center text-neutral-600 dark:text-neutral-400">Core</h2>
             </div>
-        </div>
+        </div>        
     </div>
 {% endblock content %}
